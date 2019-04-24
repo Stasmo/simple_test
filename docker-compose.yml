@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - './test_results:/test_results'
+    environment:
+      ENVIRONMENT_URL: http://jenkins.stasmo.wtf:12345
     command: pythom -m xmlrunner -o /test_results
   lint:
     image: sauce_test/unit_tests:${IMAGE_TAG:-dev}
