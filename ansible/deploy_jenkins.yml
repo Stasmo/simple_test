@@ -1,0 +1,13 @@
+- name: Deploy Jenkins
+  hosts: jenkins
+  vars:
+    jenkins_image: jenkins/jenkins:lts
+  tasks:
+    - name: Deploy the latest Jenkins container
+      docker_container:
+        name: jenkins_master
+        image: "{{ jenkins_image }}"
+        ports:
+          - 8080:8080
+        volumes:
+          - /var/jenkins_home:/var/jenkins_home

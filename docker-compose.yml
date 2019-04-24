@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  tests:
+    image: sauce_test/unit_tests:${IMAGE_TAG:-dev}
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - './test_results:/test_results'
+    command: pythom -m xmlrunner -o /test_results
+  lint:
+    image: sauce_test/unit_tests:${IMAGE_TAG:-dev}
+    command: flake8 tests.py
