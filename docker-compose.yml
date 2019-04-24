@@ -10,7 +10,7 @@ services:
       - './test_results:/test_results'
     environment:
       ENVIRONMENT_URL: http://jenkins.stasmo.wtf:12345
-    command: python -m xmlrunner -o /test_results
+    command: python -m xmlrunner -o /test_results discover
   lint:
     image: sauce_test/unit_tests:${IMAGE_TAG:-dev}
     command: flake8 tests.py
