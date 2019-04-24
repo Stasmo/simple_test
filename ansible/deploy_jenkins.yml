@@ -11,3 +11,10 @@
           - 8080:8080
         volumes:
           - /var/jenkins_home:/var/jenkins_home
+          - /var/run/docker.sock:/var/run/docker.sock
+    - name: Install tools
+      shell: docker exec -u root jenkins_master apt-get update
+    - name: Install tools
+      shell: docker exec -u root jenkins_master apt-get install python-pip -y
+    - name: Install tools
+      shell: docker exec -u root jenkins_master pip install docker
